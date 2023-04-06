@@ -1,37 +1,38 @@
 import { useState } from "react";
 
 function Dropdown({ biceps, selection, onSelect }) {
-  const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+	const handleClick = () => {
+		setIsOpen(!isOpen);
+	};
 
-  const handleBicepClick = (bicep) => {
-    setIsOpen(false);
-    onSelect(bicep);
-  };
+	const handleBicepClick = (bicep) => {
+		setIsOpen(false);
+		onSelect(bicep);
+	};
 
-  const rederedBiceps = biceps.map((bicep) => {
-    return (
-      <div onClick={() => handleBicepClick(bicep)} key={bicep.value}>
-        {bicep.label}
-      </div>
-    );
-  });
+	const rederedBiceps = biceps.map((bicep) => {
+		return (
+			<div onClick={() => handleBicepClick(bicep)} key={bicep.value}>
+				{bicep.label}
+			</div>
+		);
+	});
 
-  let content = "Biceps";
-  let triceps = "Triceps";
+	let content = "Biceps";
+	let triceps = "Triceps";
+	let back = "Back";
 
-  if (selection) {
-    content = selection.label;
-  }
+	if (selection) {
+		content = selection.label;
+	}
 
-  return (
-    <div>
-      <div onClick={handleClick}>{content}</div>
-      {isOpen && <div>{rederedBiceps}</div>}
-    </div>
-  );
+	return (
+		<div>
+			<div onClick={handleClick}>{content}</div>
+			{isOpen && <div>{rederedBiceps}</div>}
+		</div>
+	);
 }
 export default Dropdown;
