@@ -20,7 +20,8 @@ function Dropdown({ biceps, selection, onSelect }) {
     );
   });
 
-  let content = "💪🏻Biceps💪🏻";
+  let content = "Biceps";
+  let triceps = "Triceps";
 
   if (selection) {
     content = selection.label;
