@@ -1,9 +1,13 @@
-import { useState } from "react";
-import DropDown from "./components/dropdown";
 import FilterDemo from "./components/dropdown";
+import GridLinesDemo from "./components/dataTable";
 
 function App() {
-  return <FilterDemo />;
+	return (
+		<>
+			<FilterDemo />
+			<GridLinesDemo />
+		</>
+	);
 }
 
 export default App;
