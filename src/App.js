@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Dropdown from "./components/dropdown";
+import DropDown from "./components/dropdown";
 
 function App() {
   const [selection, setSelection] = useState(null);
@@ -15,7 +15,7 @@ function App() {
     { label: "Standing Hammer Curl", value: "SHC" },
   ];
   return (
-    <Dropdown biceps={biceps} selection={selection} onSelect={handleSelect} />
+    <DropDown biceps={biceps} selection={selection} onSelect={handleSelect} />
   );
 }
 

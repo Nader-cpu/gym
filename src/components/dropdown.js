@@ -1,37 +1,66 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Dropdown } from "primereact/dropdown";
 
-function Dropdown({ biceps, selection, onSelect }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function FilterDemo() {
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const countries = [
+    { name: "Australia", code: "AU" },
+    { name: "Brazil", code: "BR" },
+    { name: "China", code: "CN" },
+    { name: "Egypt", code: "EG" },
+    { name: "France", code: "FR" },
+    { name: "Germany", code: "DE" },
+    { name: "India", code: "IN" },
+    { name: "Japan", code: "JP" },
+    { name: "Spain", code: "ES" },
+    { name: "United States", code: "US" },
+  ];
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
+  const selectedCountryTemplate = (option, props) => {
+    if (option) {
+      return (
+        <div className="flex align-items-center">
+          <img
+            alt={option.name}
+            src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
+            className={`mr-2 flag flag-${option.code.toLowerCase()}`}
+            style={{ width: "18px" }}
+          />
+          <div>{option.name}</div>
+        </div>
+      );
+    }
+
+    return <span>{props.placeholder}</span>;
   };
 
-  const handleBicepClick = (bicep) => {
-    setIsOpen(false);
-    onSelect(bicep);
-  };
-
-  const rederedBiceps = biceps.map((bicep) => {
+  const countryOptionTemplate = (option) => {
     return (
-      <div onClick={() => handleBicepClick(bicep)} key={bicep.value}>
-        {bicep.label}
+      <div className="flex align-items-center">
+        <img
+          alt={option.name}
+          src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
+          className={`mr-2 flag flag-${option.code.toLowerCase()}`}
+          style={{ width: "18px" }}
+        />
+        <div>{option.name}</div>
       </div>
     );
-  });
-
-  let content = "Biceps";
-  let triceps = "Triceps";
-
-  if (selection) {
-    content = selection.label;
-  }
+  };
 
   return (
-    <div>
-      <div onClick={handleClick}>{content}</div>
-      {isOpen && <div>{rederedBiceps}</div>}
+    <div className="card flex justify-content-center">
+      <Dropdown
+        value={selectedCountry}
+        onChange={(e) => setSelectedCountry(e.value)}
+        options={countries}
+        optionLabel="name"
+        placeholder="Select a Country"
+        filter
+        valueTemplate={selectedCountryTemplate}
+        itemTemplate={countryOptionTemplate}
+        className="w-full md:w-14rem"
+      />
     </div>
   );
 }
-export default Dropdown;
