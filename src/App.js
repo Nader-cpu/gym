@@ -204,7 +204,10 @@ function App() {
 				change={setSelectedExercises}
 			/>
 
-			<GridLinesDemo selectedExercises={selectedExercises} />
+			<GridLinesDemo
+				selectedExercises={selectedExercises}
+				setSelectedExercises={setSelectedExercises}
+			/>
 		</>
 	);
 }
