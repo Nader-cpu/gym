@@ -56,7 +56,6 @@ export default function GenericTable({
 				type="button"
 				icon="pi pi-file-pdf"
 				severity="danger"
-				rounded
 				onClick={exportPdf}
 				data-pr-tooltip="PDF"
 			/>
@@ -68,13 +67,19 @@ export default function GenericTable({
 			<DataTable
 				value={selectedExercises}
 				showGridlines
-				footer={header}
-				tableStyle={{ margin: "auto", width: "75vw" }}>
+				tableStyle={{ margin: "auto", width: "75vw", marginTop: "250px" }}>
 				<Column field="name" header="Name"></Column>
 				<Column field="muscleGroup" header="MuscleGroup"></Column>
 				<Column field="sets" header="Sets"></Column>
-				<Column style={{ flex: "0 0 4rem" }} body={actionTemplate}></Column>
+				<Column
+					header={header}
+					style={{ flex: "0 0 4rem" }}
+					body={actionTemplate}></Column>
 			</DataTable>
 		</div>
 	);
 }
+
+// optionDisabled={(option) =>
+//     selectedExercises.find((e) => e.name === option.name)
+// }
