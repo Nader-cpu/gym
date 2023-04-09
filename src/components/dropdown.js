@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 
-export default function FilterDemo({
+export default function GenericDropdown({
   placeHolder,
   exercises,
   selectedExercises,

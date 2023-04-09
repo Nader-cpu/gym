@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 
-export default function GridLinesDemo({
+export default function GenericTable({
 	selectedExercises,
 	setSelectedExercises,
 }) {
@@ -23,16 +23,52 @@ export default function GridLinesDemo({
 
 	const handleDelete = (rowData) => {
 		const filteredExercises = selectedExercises.filter(
-			(exercise) => exercise.name !== rowData.name
+			(ex) => ex.name !== rowData.name
 		);
 		setSelectedExercises(filteredExercises);
-		console.log(rowData);
 	};
+
+	const cols = [
+		{ field: "name", header: "Name" },
+		{ field: "muscleGroup", header: "MuscleGroup" },
+		{ field: "sets", header: "Sets" },
+	];
+
+	const exportColumns = cols.map((col) => ({
+		title: col.header,
+		dataKey: col.field,
+	}));
+
+	const exportPdf = () => {
+		import("jspdf").then((jsPDF) => {
+			import("jspdf-autotable").then(() => {
+				const doc = new jsPDF.default(0, 0);
+
+				doc.autoTable(exportColumns, selectedExercises);
+				doc.save("exercises.pdf");
+			});
+		});
+	};
+
+	const header = (
+		<div className="flex align-items-center justify-content-end gap-2">
+			<Button
+				type="button"
+				icon="pi pi-file-pdf"
+				severity="danger"
+				rounded
+				onClick={exportPdf}
+				data-pr-tooltip="PDF"
+			/>
+		</div>
+	);
+
 	return (
 		<div className="card">
 			<DataTable
 				value={selectedExercises}
 				showGridlines
+				footer={header}
 				tableStyle={{ margin: "auto", width: "75vw" }}>
 				<Column field="name" header="Name"></Column>
 				<Column field="muscleGroup" header="MuscleGroup"></Column>
