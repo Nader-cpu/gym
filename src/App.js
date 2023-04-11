@@ -1,6 +1,7 @@
 import GenericDropdown from "./components/dropdown";
 import GenericTable from "./components/dataTable";
 import { useState } from "react";
+import { GenericInstructions } from "./components/instructions";
 
 function App() {
 	const [selectedExercises, setSelectedExercises] = useState([]);
@@ -159,6 +160,53 @@ function App() {
 			sets: "12-10-8",
 		},
 	];
+
+	const abs = [
+		{
+			name: "Plank poses",
+			muscleGroup: "Abs",
+			sets: "12-10-8",
+		},
+		{
+			name: "Bicycle crunches.",
+			muscleGroup: "Abs",
+			sets: "12-10-8",
+		},
+		{
+			name: "Get in the ring",
+			muscleGroup: "Abs",
+			sets: "12-10-8",
+		},
+		{
+			name: "Pilates",
+			muscleGroup: "Abs",
+			sets: "12-10-8",
+		},
+	];
+
+	const traps = [
+		{
+			name: "Face Pull",
+			muscleGroup: "Traps",
+			sets: "12-10-8",
+		},
+		{
+			name: "Incline Dumbbel Row",
+			muscleGroup: "Traps",
+			sets: "12-10-8",
+		},
+		{
+			name: "Pullup Shrug",
+			muscleGroup: "Traps",
+			sets: "12-10-8",
+		},
+		{
+			name: "Barbel Shrug",
+			muscleGroup: "Traps",
+			sets: "12-10-8",
+		},
+	];
+
 	return (
 		<>
 			<div
@@ -213,18 +261,20 @@ function App() {
 					change={setSelectedExercises}
 				/>
 				<GenericDropdown
-					placeHolder={"Biceps"}
-					exercises={biceps}
+					placeHolder={"Abs"}
+					exercises={abs}
 					selectedExercises={selectedExercises}
 					change={setSelectedExercises}
 				/>
 				<GenericDropdown
-					placeHolder={"Biceps"}
-					exercises={biceps}
+					placeHolder={"Traps"}
+					exercises={traps}
 					selectedExercises={selectedExercises}
 					change={setSelectedExercises}
 				/>
 			</div>
+			<br />
+			<GenericInstructions />
 
 			<GenericTable
 				selectedExercises={selectedExercises}

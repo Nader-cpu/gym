@@ -67,7 +67,7 @@ export default function GenericTable({
 			<DataTable
 				value={selectedExercises}
 				showGridlines
-				tableStyle={{ margin: "auto", width: "75vw", marginTop: "250px" }}>
+				tableStyle={{ margin: "auto", width: "75vw", marginTop: "25px" }}>
 				<Column field="name" header="Name"></Column>
 				<Column field="muscleGroup" header="MuscleGroup"></Column>
 				<Column field="sets" header="Sets"></Column>
