@@ -14,7 +14,7 @@ function App() {
           justifyContent: "center",
         }}
       >
-        <h2>Create Program</h2>
+        <h1>Create Program</h1>
       </div>
       <div
         style={{
@@ -84,3 +84,4 @@ function App() {
 }
 
 export default App;
+
