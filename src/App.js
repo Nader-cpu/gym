@@ -2,9 +2,10 @@ import GenericDropdown from "./components/dropdown";
 import GenericTable from "./components/dataTable";
 import { useState } from "react";
 import data from "./components/data";
+import { GenericInstructions } from "./components/instructions";
 
 function App() {
-  const [selectedExercises, setSelectedExercises] = useState([]);
+	const [selectedExercises, setSelectedExercises] = useState([]);
 
   return (
     <>
@@ -75,12 +76,15 @@ function App() {
         />
       </div>
 
-      <GenericTable
-        selectedExercises={selectedExercises}
-        setSelectedExercises={setSelectedExercises}
-      />
-    </>
-  );
+			<br />
+			<GenericInstructions />
+
+			<GenericTable
+				selectedExercises={selectedExercises}
+				setSelectedExercises={setSelectedExercises}
+			/>
+		</>
+	);
 }
 
 export default App;
