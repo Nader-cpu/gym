@@ -61,14 +61,14 @@ function App() {
 					change={setSelectedExercises}
 				/>
 				<GenericDropdown
-					placeHolder={"Biceps"}
-					exercises={data.biceps}
+					placeHolder={"Abs"}
+					exercises={data.abs}
 					selectedExercises={selectedExercises}
 					change={setSelectedExercises}
 				/>
 				<GenericDropdown
-					placeHolder={"Biceps"}
-					exercises={data.biceps}
+					placeHolder={"Traps"}
+					exercises={data.traps}
 					selectedExercises={selectedExercises}
 					change={setSelectedExercises}
 				/>
