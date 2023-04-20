@@ -39,7 +39,3 @@ export default function GenericDropdown({ placeHolder, exercises }) {
     </>
   );
 }
-
-// optionDisabled={(option) =>
-// 	exercises.find((e) => e.name === option.name)
-//}
